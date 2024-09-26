@@ -11,9 +11,7 @@
 
   <link href="assets/img/logo1.png" rel="icon">
   <link href="assets/img/logo.png" rel="apple-touch-icon">
-
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -21,11 +19,8 @@
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
   <link href="assets/css/style.css" rel="stylesheet">
-
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 </head>
 
 <body>
@@ -35,7 +30,6 @@
       <div class="header-container d-flex align-items-center">
         <div class="logo mr-auto">
           <h1 class="text-light"><a href="index.php"><span>SIG</span></a></h1>
-
         </div>
 
         <nav class="nav-menu d-none d-lg-block">
@@ -47,7 +41,6 @@
             <li><a href="#cek-radius">Cek Radius</a></li>
             <li><a href="#contact">Kontak Kami</a></li>
             </li>
-
             <li class="get-started"><a href="#about">Mulai</a></li>
           </ul>
         </nav>
@@ -68,22 +61,16 @@
 
     <section id="clients" class="clients">
       <div class="container">
-
         <div class="row">
-
           <div class="col-md-12 col-lg-3 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
             <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" style="opacity: 0;">
           </div>
-
         </div>
-
       </div>
     </section>
 
-    <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
-
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <h2>SIG SMA KOTA MAKASSAR</h2>
@@ -101,9 +88,8 @@
             </p>
           </div>
         </div>
-
       </div>
-    </section><!-- End About Section -->
+    </section>
 
     <section id="counts" class="counts">
       <div class="container">
@@ -121,27 +107,20 @@
             <span data-toggle="counter-up" style="font-size: 50px;"><?php echo $sman; ?></span>
             <p style="font-size: 20px; font-weight: bold;">Sekolah Menengah Atas</p>
           </div>
-
         </div>
-
       </div>
     </section>
 
-    <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <div class="container">
-
         <div class="text-center" data-aos="zoom-in">
           <h3 style="font-size: 36px;">Sistem Informasi Geografis</h3>
           <p style="font-size: 24px;">Detail sekolah menengah negeri di Kota Makassar</p>
           <a class="cta-btn" href="#portfolio" style="font-size: 20px; padding: 10px 20px;">Lihat Detail</a>
         </div>
-
-
       </div>
-    </section><!-- End Cta Section -->
+    </section>
 
-    <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container">
         <div class="text-center" data-aos="zoom-in">
@@ -150,21 +129,9 @@
         <div class="panel-body" style="align-content: center;">
           <div id="map" style="width:100%;height:480px;"></div>
         </div>
-        <div class="zone-descriptions" style="margin-top: 20px;">
-          <h4 style="font-weight: bold;">Keterangan</h4>
-          <ul style="list-style-type: none; padding-left: 0;">
-            <li><strong>Zona I / Merah:</strong> Biringkanaya, Tamalanrea, Panakkukang, dan Manggala</li>
-            <li><strong>Zona II / Kuning:</strong> Bontoala, Tallo, Ujung Pandang, Wajo, dan Panakkukang</li>
-            <li><strong>Zona III / Hitam:</strong> Makassar, Mamajang, Ujung Pandang, Mariso, Rappocini, dan Wajo</li>
-            <li><strong>Zona IV / Hijau:</strong> Manggala, Panakkukang, dan Rappocini</li>
-            <li><strong>Zona V / Biru:</strong> Tamalate, Mamajang, Mariso, Panakkukang, dan Rappocini</li>
-            <li><strong>Zona VI / Putih:</strong> Ujung Tanah, Tallo, Ujung Pandang, dan Sangkarrang</li>
-          </ul>
-        </div>
       </div>
     </section>
 
-    <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCfVs4seygQa2FZiHc8-JBPw4AyaADVzNA"></script>
     <script src="https://cdn.jsdelivr.net/npm/@googlemaps/markerclusterer@latest/dist/index.min.js"></script>
 
@@ -179,7 +146,6 @@
         var mapElement = document.getElementById('map');
         var map = new google.maps.Map(mapElement, mapOptions);
 
-        // Mengambil data dan menetapkan marker
         fetch('http://localhost/sig-sma/ambildata_kec.php')
           .then(response => response.json())
           .then(data => {
@@ -191,43 +157,34 @@
 
       function groupLocationsByCustomGroups(locations) {
         var groups = {
-          'Group 1': ['Kecamatan Biringkanaya', 'Kecamatan Tamalanrea', 'Kecamatan Panakkukang', 'Kecamatan Manggala'],
-          'Group 2': ['Kecamatan Bontoala', 'Kecamatan Tallo', 'Kecamatan Ujung Pandang', 'Kecamatan Wajo', 'Kecamatan Panakkukang'],
-          'Group 3': ['Kecamatan Makassar', 'Kecamatan Mamajang', 'Kecamatan Ujung Pandang', 'Kecamatan Mariso', 'Kecamatan Wajo', 'Kecamatan Rappocini'],
-          'Group 4': ['Kecamatan Manggala', 'Kecamatan Panakkukang', 'Kecamatan Rappocini'],
-          'Group 5': ['Kecamatan Tamalate', 'Kecamatan Mamajang', 'Kecamatan Mariso', 'Kecamatan Panakkukang', 'Kecamatan Rappocini'],
-          'Group 6': ['Kecamatan Ujung Tanah', 'Kecamatan Tallo', 'Kecamatan Ujung Pandang', 'Kecamatan Sangkarrang']
-
-          // 'Group 1': ['Kecamatan Biringkanaya', 'Kecamatan Tamalanrea'],
-          // 'Group 2': ['Kecamatan Bontoala', 'Kecamatan Tallo', 'Kecamatan Wajo'],
-          // 'Group 3': ['Kecamatan Makassar', 'Kecamatan Mariso'],
-          // 'Group 4': ['Kecamatan Manggala', 'Kecamatan Panakkukang', 'Kecamatan Rappocini'],
-          // 'Group 5': ['Kecamatan Tamalate', 'Kecamatan Mamajang'],
-          // 'Group 6': ['Kecamatan Ujung Tanah', 'Kecamatan Ujung Pandang', 'Kecamatan Sangkarrang']
+          'Group 1': ['SMA Negeri 5 Makassar', 'SMA Negeri 9 Makassar', 'SMA Negeri 10 Makassar', 'SMA Negeri 12 Makassar',
+            'SMA Negeri 13 Makassar', 'SMA Negeri 19 Makassar', 'SMA Negeri 23 Makassar'],
+          'Group 2': ['SMA Negeri 11 Makassar', 'SMA Negeri 14 Makassar', 'SMA Negeri 20 Makassar', 'SMA Negeri 3 Makassar', 'SMA Negeri 8 Makassar'],
+          'Group 3': ['SMA Negeri 7 Makassar', 'SMA Negeri 18 Makassar', 'SMA Negeri 21 Makassar', 'SMA Negeri 22 Makassar'],
+          'Group 4': ['SMA Negeri 1 Makassar', 'SMA Negeri 4 Makassar', 'SMA Negeri 16 Makassar', 'SMA Negeri 17 Makassar'],
+          'Group 5': ['SMA Negeri 6 Makassar', 'SMA Negeri 15 Makassar']
         };
 
         var groupedLocations = {};
 
         for (var group in groups) {
           groupedLocations[group] = locations.filter(function(location) {
-            return groups[group].includes(location.kecamatan);
+            return groups[group].includes(location.nama_instansi);
           });
         }
-
         return groupedLocations;
       }
 
       function setMarkers(map, locations) {
         console.log("Menetapkan marker:", locations);
         var globalPin = 'img/marker.png';
+        var centroidPin = 'img/center.png';
         var markers = [];
         var circles = [];
 
-        // Kelompokkan lokasi berdasarkan grup kustom
         var locationsByGroup = groupLocationsByCustomGroups(locations);
         console.log("Lokasi berdasarkan grup:", locationsByGroup);
 
-        // Untuk setiap grup, buat marker dan lingkaran
         for (var group in locationsByGroup) {
           var filteredLocations = locationsByGroup[group];
 
@@ -241,7 +198,7 @@
               var marker = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
-                title: location.kecamatan,
+                title: location.nama_instansi,
                 icon: globalPin
               });
 
@@ -262,16 +219,66 @@
             circles.push(circle);
           }
         }
+
+        var centroids = [{
+            group: 'Group 1',
+            latitude: -5.165329463435,
+            longitude: 119.47856906403571
+          },
+          {
+            group: 'Group 2',
+            latitude: -5.174601363954166,
+            longitude: 119.41055769815449
+          },
+          {
+            group: 'Group 3',
+            latitude: -5.1120975363955,
+            longitude: 119.52806116255199
+          },
+          {
+            group: 'Group 4',
+            latitude: -5.127520198176001,
+            longitude: 119.41956436133525
+          },
+          {
+            group: 'Group 5',
+            latitude: -5.084788294249,
+            longitude: 119.488404795533
+          }
+        ];
+
+        centroids.forEach(function(centroid) {
+          var centroidLatLng = new google.maps.LatLng(centroid.latitude, centroid.longitude);
+
+          var centroidMarker = new google.maps.Marker({
+            position: centroidLatLng,
+            map: map,
+            title: "Centroid " + centroid.group,
+            icon: centroidPin
+          });
+
+          var infowindowContent = '<div><strong>Centroid ' + centroid.group + '</strong><br>' +
+            'Latitude: ' + centroid.latitude + '<br>' +
+            'Longitude: ' + centroid.longitude + '</div>';
+
+          google.maps.event.addListener(centroidMarker, 'click', function() {
+            var infowindow = new google.maps.InfoWindow({
+              content: infowindowContent
+            });
+            infowindow.open(map, centroidMarker);
+          });
+
+          markers.push(centroidMarker);
+        });
       }
 
       function getColorForGroup(group) {
         var colors = {
           'Group 1': '#FF0000',
-          'Group 2': '#EAFF00',
-          'Group 3': '#000000',
-          'Group 4': '#00FF00',
-          'Group 5': '#00FFFF',
-          'Group 6': '#FFFFFF'
+          'Group 2': '#0000ff',
+          'Group 3': '#3cb371',
+          'Group 4': '#00e6ff',
+          'Group 5': '#ee82ee'
         };
         return colors[group] || '#FF0000';
       }
@@ -305,23 +312,6 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
-<?php
-// $output = shell_exec("python ahc.py 2>&1");
-
-// if ($output) {
-//     echo "<pre>$output</pre>";
-// } else {
-//     // echo "Python script executed successfully. Dendrogram has been generated.";
-// }
-
-// if (file_exists('img/dendogram_output.png')) {
-//     echo "<img src='img/dendogram_output.png' alt='Dendrogram'>";
-// } else {
-//     echo "Dendrogram image not found.";
-// }
-?> 
-
-    <!-- ======= Contact Section ======= -->
     <section id="portfolio" class="contact">
       <div class="container">
         <div class="row">
@@ -333,7 +323,6 @@
           </div>
 
           <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
-
             <div class="col-md-12">
               <div class="panel panel-info panel-dashboard">
                 <div class="panel-heading centered">
@@ -377,7 +366,6 @@
                       } else {
                         echo "data tidak ada.";
                       } ?>
-
                     </tbody>
                   </table>
                 </div>
@@ -387,11 +375,9 @@
         </div>
       </div>
       </div>
-
       </div>
-    </section><!-- End Contact Section -->
+    </section>
 
-    <!-- ======= Cek Radius Section ======= -->
     <section id="cek-radius" class="cek-radius">
       <div class="container">
         <div class="row">
@@ -427,9 +413,7 @@
         </div>
       </div>
     </section>
-    <!-- End Cek Radius Section -->
 
-    <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfVs4seygQa2FZiHc8-JBPw4AyaADVzNA&libraries=geometry"></script>
 
     <script type="text/javascript">
@@ -437,6 +421,139 @@
       let marker;
       let radiusCircle;
       let selectedLocation;
+
+      const centroids = [{
+          group: 'Group 1',
+          latitude: -5.165329463435,
+          longitude: 119.47856906403571
+        },
+        {
+          group: 'Group 2',
+          latitude: -5.174601363954166,
+          longitude: 119.41055769815449
+        },
+        {
+          group: 'Group 3',
+          latitude: -5.1120975363955,
+          longitude: 119.52806116255199
+        },
+        {
+          group: 'Group 4',
+          latitude: -5.127520198176001,
+          longitude: 119.41956436133525
+        },
+        {
+          group: 'Group 5',
+          latitude: -5.084788294249,
+          longitude: 119.488404795533
+        }
+      ];
+
+      const groups = {
+        'Group 1': ['SMA Negeri 5 Makassar', 'SMA Negeri 9 Makassar', 'SMA Negeri 10 Makassar', 'SMA Negeri 12 Makassar',
+          'SMA Negeri 13 Makassar', 'SMA Negeri 19 Makassar', 'SMA Negeri 23 Makassar'
+        ],
+        'Group 2': ['SMA Negeri 11 Makassar', 'SMA Negeri 14 Makassar', 'SMA Negeri 20 Makassar', 'SMA Negeri 3 Makassar', 'SMA Negeri 8 Makassar'],
+        'Group 3': ['SMA Negeri 7 Makassar', 'SMA Negeri 18 Makassar', 'SMA Negeri 21 Makassar', 'SMA Negeri 22 Makassar'],
+        'Group 4': ['SMA Negeri 1 Makassar', 'SMA Negeri 4 Makassar', 'SMA Negeri 16 Makassar', 'SMA Negeri 17 Makassar'],
+        'Group 5': ['SMA Negeri 6 Makassar', 'SMA Negeri 15 Makassar']
+      };
+
+
+      const schoolLocations = {
+        'SMA Negeri 1 Makassar': {
+          latitude: -5.135020808705,
+          longitude: 119.418717593012
+        },
+        'SMA Negeri 2 Makassar': {
+          latitude: -5.169539053142,
+          longitude: 119.412733425786
+        },
+        'SMA Negeri 3 Makassar': {
+          latitude: -5.168332560249,
+          longitude: 119.412395646756
+        },
+        'SMA Negeri 4 Makassar': {
+          latitude: -5.116731648420,
+          longitude: 119.418923706025
+        },
+        'SMA Negeri 5 Makassar': {
+          latitude: -5.149079977979,
+          longitude: 119.460825934161
+        },
+        'SMA Negeri 6 Makassar': {
+          latitude: -5.089240691107,
+          longitude: 119.481909490260
+        },
+        'SMA Negeri 7 Makassar': {
+          latitude: -5.08159516408417,
+          longitude: 119.533885860188
+        },
+        'SMA Negeri 8 Makassar': {
+          latitude: -5.169858811914,
+          longitude: 119.41420181546
+        },
+        'SMA Negeri 9 Makassar': {
+          latitude: -5.179416252936,
+          longitude: 119.45237087997
+        },
+        'SMA Negeri 10 Makassar': {
+          latitude: -5.18566285202,
+          longitude: 119.48830001561
+        },
+        'SMA Negeri 11 Makassar': {
+          latitude: -5.171619906171,
+          longitude: 119.416158737848
+        },
+        'SMA Negeri 12 Makassar': {
+          latitude: -5.163083777869,
+          longitude: 119.483603148255
+        },
+        'SMA Negeri 13 Makassar': {
+          latitude: -5.175232640651,
+          longitude: 119.47784552163
+        },
+        'SMA Negeri 14 Makassar': {
+          latitude: -5.165723509511,
+          longitude: 119.40884900007
+        },
+        'SMA Negeri 15 Makassar': {
+          latitude: -5.080335897391,
+          longitude: 119.494900100806
+        },
+        'SMA Negeri 16 Makassar': {
+          latitude: -5.137467251929,
+          longitude: 119.411406585086
+        },
+        'SMA Negeri 17 Makassar': {
+          latitude: -5.12086108364969,
+          longitude: 119.429209561218
+        },
+        'SMA Negeri 18 Makassar': {
+          latitude: -5.125554036926,
+          longitude: 119.53175786038
+        },
+        'SMA Negeri 19 Makassar': {
+          latitude: -5.163758086491,
+          longitude: 119.51250930322
+        },
+        'SMA Negeri 20 Makassar': {
+          latitude: -5.20254334273788,
+          longitude: 119.398144296984
+        },
+        'SMA Negeri 21 Makassar': {
+          latitude: -5.120861083650,
+          longitude: 119.515137450068
+        },
+        'SMA Negeri 22 Makassar': {
+          latitude: -5.104416600922,
+          longitude: 119.531463479572
+        },
+        'SMA Negeri 23 Makassar': {
+          latitude: -5.141069221117,
+          longitude: 119.474527451421
+        }
+      };
 
       function initialize() {
         map = new google.maps.Map(document.getElementById('map-radius'), {
@@ -447,18 +564,18 @@
           }
         });
 
+        map.addListener('click', (event) => {
+          placeMarker(event.latLng);
+        });
+
         radiusCircle = new google.maps.Circle({
-          map: map,
-          radius: 0,
-          fillColor: '#FF0000',
-          fillOpacity: 0.35,
           strokeColor: '#FF0000',
           strokeOpacity: 0.8,
           strokeWeight: 2,
-        });
-
-        map.addListener('click', (event) => {
-          placeMarker(event.latLng);
+          fillColor: '#FF0000',
+          fillOpacity: 0.35,
+          map: map,
+          radius: 0 
         });
       }
 
@@ -474,157 +591,127 @@
         });
 
         map.setCenter(location);
-
         document.getElementById('address').value = 'Koordinat: ' + location.lat() + ', ' + location.lng();
         selectedLocation = location;
       }
 
-      function searchSchools() {
-        const radiusKm = parseFloat(document.getElementById('radius').value);
+      function findNearestCentroid() {
+        let minDistance = Infinity;
+        let nearestCentroid = null;
 
-        if (!radiusKm || !selectedLocation) {
-          alert('Harap pilih lokasi di peta dan masukkan radius.');
+        centroids.forEach(centroid => {
+          const distance = google.maps.geometry.spherical.computeDistanceBetween(
+            selectedLocation,
+            new google.maps.LatLng(centroid.latitude, centroid.longitude)
+          );
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            nearestCentroid = centroid;
+          }
+        });
+        return nearestCentroid;
+      }
+
+      function searchSchools() {
+        if (!selectedLocation) {
+          alert('Harap pilih lokasi di peta.');
           return;
         }
 
-        const radiusMeters = radiusKm * 1000; // Convert km to meters
-
-        radiusCircle.setCenter(selectedLocation);
-        radiusCircle.setRadius(radiusMeters);
-
-        // Panggil fetchSchools dan lakukan perhitungan AHC setelah data sekolah diambil
-        fetchSchools(selectedLocation, radiusMeters)
-          .then(schools => {
-            if (schools && schools.length > 0) {
-              ahcClustering(schools); // Lakukan perhitungan AHC dengan data sekolah yang ditemukan
-            } else {
-              console.error("Tidak ada sekolah dalam radius yang ditentukan.");
-            }
-          });
-      }
-
-      function fetchSchools(center, radius) {
-        const url = 'http://localhost/sig-sma/ambildata.php';
-        return fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            const schools = data.results;
-            const tableBody = document.getElementById('result-table').getElementsByTagName('tbody')[0];
-            tableBody.innerHTML = '';
-
-            // Array untuk menyimpan sekolah dan jaraknya
-            const schoolsWithinRadius = [];
-
-            schools.forEach(school => {
-              const schoolLocation = new google.maps.LatLng(school.latitude, school.longitude);
-              const distance = google.maps.geometry.spherical.computeDistanceBetween(center, schoolLocation);
-
-              if (distance <= radius) {
-                schoolsWithinRadius.push({
-                  id: school.id,
-                  nama_instansi: school.nama_instansi,
-                  latitude: school.latitude,
-                  longitude: school.longitude,
-                  distance: distance,
-                });
-              }
-            });
-
-            // Urutkan sekolah berdasarkan jarak
-            schoolsWithinRadius.sort((a, b) => a.distance - b.distance);
-
-            // Tambahkan sekolah ke tabel hasil
-            schoolsWithinRadius.forEach(school => {
-              // Tambahkan marker ke peta
-              new google.maps.Marker({
-                position: new google.maps.LatLng(school.latitude, school.longitude),
-                map: map,
-                title: school.nama_instansi,
-                icon: 'img/marker.png'
-              });
-
-              // Tambahkan baris ke tabel
-              const row = tableBody.insertRow();
-              row.insertCell(0).innerText = school.nama_instansi;
-              row.insertCell(1).innerText = school.distance.toFixed(2) + ' meters';
-            });
-
-            return schoolsWithinRadius;
-          });
-      }
-
-      // Fungsi Haversine untuk menghitung jarak antara dua titik geografis
-      function haversine(lat1, lon1, lat2, lon2) {
-        const R = 6371e3; // Radius bumi dalam meter
-        const φ1 = lat1 * Math.PI / 180; // Lintang pertama dalam radian
-        const φ2 = lat2 * Math.PI / 180; // Lintang kedua dalam radian
-        const Δφ = (lat2 - lat1) * Math.PI / 180;
-        const Δλ = (lon2 - lon1) * Math.PI / 180;
-
-        const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-          Math.cos(φ1) * Math.cos(φ2) *
-          Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        const distance = R * c; // Jarak dalam meter
-        return distance;
-      }
-
-      // Fungsi untuk melakukan Single Linkage Clustering (klasterisasi dengan jarak terdekat)
-      function single_linkage_clustering(schools, threshold) {
-        let clusters = schools.map(school => [school]);
-
-        while (clusters.length > 1) {
-          let minDistance = Infinity;
-          let clusterA = null;
-          let clusterB = null;
-
-          for (let i = 0; i < clusters.length; i++) {
-            for (let j = i + 1; j < clusters.length; j++) {
-              const distance = calculate_min_distance_between_clusters(clusters[i], clusters[j]);
-              if (distance < minDistance) {
-                minDistance = distance;
-                clusterA = i;
-                clusterB = j;
-              }
-            }
-          }
-
-          if (minDistance > threshold) {
-            break; // Berhenti jika jarak minimum di atas threshold
-          }
-
-          // Gabungkan dua kluster terdekat
-          clusters[clusterA] = clusters[clusterA].concat(clusters[clusterB]);
-          clusters.splice(clusterB, 1); // Hapus kluster B yang sudah digabung
+        const nearestCentroid = findNearestCentroid();
+        if (!nearestCentroid) {
+          alert('Centroid terdekat tidak ditemukan.');
+          return;
         }
 
-        return clusters;
-      }
+        const groupSchools = groups[nearestCentroid.group];
+        if (!groupSchools || groupSchools.length === 0) {
+          alert('Tidak ada sekolah dalam grup ini.');
+          return;
+        }
 
-      // Fungsi untuk menghitung jarak minimum antara dua kluster
-      function calculate_min_distance_between_clusters(clusterA, clusterB) {
-        let minDistance = Infinity;
-
-        clusterA.forEach(schoolA => {
-          clusterB.forEach(schoolB => {
-            const distance = haversine(schoolA.latitude, schoolA.longitude, schoolB.latitude, schoolB.longitude);
-            if (distance < minDistance) {
-              minDistance = distance;
+        let maxDistance = 0;
+        groupSchools.forEach(school => {
+          const schoolData = schoolLocations[school];
+          if (schoolData) {
+            const schoolLocation = new google.maps.LatLng(schoolData.latitude, schoolData.longitude);
+            const distance = google.maps.geometry.spherical.computeDistanceBetween(
+              new google.maps.LatLng(nearestCentroid.latitude, nearestCentroid.longitude), schoolLocation
+            );
+            if (distance > maxDistance) {
+              maxDistance = distance;
             }
-          });
+          }
         });
 
-        return minDistance;
+        const centroidLocation = new google.maps.LatLng(nearestCentroid.latitude, nearestCentroid.longitude);
+        const centroidMarker = new google.maps.Marker({
+          position: centroidLocation,
+          map: map,
+          title: 'Centroid: ' + nearestCentroid.group,
+          icon: 'img/center.png' 
+        });
+
+        if (!radiusCircle) {
+          radiusCircle = new google.maps.Circle({
+            map: map,
+            fillColor: '#AA0000',
+            fillOpacity: 0.2,
+            strokeOpacity: 0.35,
+            strokeWeight: 2,
+            clickable: false
+          });
+        }
+
+        radiusCircle.setCenter(centroidLocation);
+        radiusCircle.setRadius(maxDistance); 
+
+        map.setCenter(centroidLocation); 
+
+        displayClusterSchools(nearestCentroid);
       }
 
-      // Fungsi untuk melakukan AHC (Agglomerative Hierarchical Clustering) dengan Single Linkage
-      function ahcClustering(schools) {
-        const threshold = 5000; // Threshold untuk jarak dalam meter
-        const clusters = single_linkage_clustering(schools, threshold);
+      function displayClusterSchools(nearestCentroid) {
+        const groupSchools = groups[nearestCentroid.group];
 
-        console.log('Clusters:', clusters);
-        // Anda bisa menambahkan logika untuk menampilkan hasil clustering di peta atau tabel
+        if (!groupSchools || groupSchools.length === 0) {
+          alert('Tidak ada sekolah dalam grup ini.');
+          return;
+        }
+
+        const tableBody = document.getElementById('result-table').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = ''; 
+
+        const schoolsWithDistance = [];
+
+        groupSchools.forEach(school => {
+          const schoolData = schoolLocations[school];
+
+          if (schoolData) {
+            const schoolLocation = new google.maps.LatLng(schoolData.latitude, schoolData.longitude);
+            const distance = google.maps.geometry.spherical.computeDistanceBetween(selectedLocation, schoolLocation);
+
+            new google.maps.Marker({
+              position: schoolLocation,
+              map: map,
+              title: school,
+              icon: 'img/marker.png' 
+            });
+
+            schoolsWithDistance.push({
+              name: school,
+              distance: distance
+            });
+          }
+        });
+
+        schoolsWithDistance.sort((a, b) => a.distance - b.distance);
+        schoolsWithDistance.forEach(school => {
+          const row = tableBody.insertRow();
+          row.insertCell(0).innerText = school.name;
+          row.insertCell(1).innerText = school.distance.toFixed(2) + ' meters';
+        });
       }
 
       function enableUserLocation() {
@@ -632,8 +719,8 @@
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-              placeMarker(userLatLng); // Tempatkan marker di lokasi pengguna
-              map.setCenter(userLatLng); // Pusatkan peta di lokasi pengguna
+              placeMarker(userLatLng);
+              map.setCenter(userLatLng);
               document.getElementById('address').value = 'Lokasi Anda: ' + position.coords.latitude + ', ' + position.coords.longitude;
             },
             () => {
@@ -649,14 +736,13 @@
         const mapElement = document.getElementById('map-radius');
         if (mapElement.requestFullscreen) {
           mapElement.requestFullscreen();
-        } else if (mapElement.mozRequestFullScreen) { // Firefox
+        } else if (mapElement.mozRequestFullScreen) {
           mapElement.mozRequestFullScreen();
-        } else if (mapElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        } else if (mapElement.webkitRequestFullscreen) {
           mapElement.webkitRequestFullscreen();
-        } else if (mapElement.msRequestFullscreen) { // Edge
+        } else if (mapElement.msRequestFullscreen) {
           mapElement.msRequestFullscreen();
         }
-
         mapElement.focus();
       }
 
@@ -671,12 +757,9 @@
           document.msExitFullscreen();
         }
       }
-
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
-
-    <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
         <div class="row">
@@ -686,9 +769,7 @@
               <p>Halaman ini memuat informasi pengembang serta masukan kritik dan saran dari pengguna apabila ditemukan masalah. </p>
             </div>
           </div>
-
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-
             <div class="info mt-4">
               <i class="icofont-google-map"></i>
               <h4>Lokasi:</h4>
@@ -710,7 +791,6 @@
                 </div>
               </div>
             </div>
-
             <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
               <div class="form-row">
                 <div class="col-md-6 form-group">
@@ -739,19 +819,14 @@
             </form>
           </div>
         </div>
-
       </div>
-    </section><!-- End Contact Section -->
+    </section>
+  </main>
 
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
   <footer id="footer">
-
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>SIG</h3>
             <p>
@@ -762,7 +837,6 @@
               <strong>Email:</strong> disdikkotamaks@gmail.com<br>
             </p>
           </div>
-
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Link bantuan</h4>
             <ul>
@@ -773,14 +847,12 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
-
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Data</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">SMA Negeri</a></li>
             </ul>
           </div>
-
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Ikuti info terbaru</h4>
             <p>Subscribe email</p>
@@ -788,13 +860,11 @@
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
           </div>
-
         </div>
       </div>
     </div>
 
     <div class="container d-md-flex py-4">
-
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
           &copy; Copyright <strong><span>SIG SMA MAKASSAR</span></strong>.
@@ -810,10 +880,9 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -824,14 +893,12 @@
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-
   <script src="assets/js/main.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap-hover-dropdown.js"></script>
   <script src="js/script.js"></script>
   <script src="js/jquery.dataTables.min.js"></script>
   <script src="js/datatable-bootstrap.js"></script>
-
 </body>
 
 </html>
