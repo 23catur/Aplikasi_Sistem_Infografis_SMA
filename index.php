@@ -91,6 +91,7 @@
       </div>
     </section>
 
+
     <section id="counts" class="counts">
       <div class="container">
 
@@ -124,10 +125,21 @@
     <section id="services" class="services section-bg">
       <div class="container">
         <div class="text-center" data-aos="zoom-in">
-          <h3 style="font-weight: bold; text-transform: uppercase;">Peta</h3>
+          <h3 style="font-weight: bold; text-transform: uppercase;">Peta Zonasi Berdasarkan Peraturan Pemerintah</h3>
         </div>
         <div class="panel-body" style="align-content: center;">
-          <div id="map" style="width:100%;height:480px;"></div>
+          <div id="map-zone" style="width:100%;height:480px;"></div>
+        </div>
+        <div class="zone-descriptions" style="margin-top: 20px;">
+          <h4 style="font-weight: bold;">Keterangan</h4>
+          <ul style="list-style-type: none; padding-left: 0;">
+            <li><strong>Zona I / Merah:</strong> Biringkanaya, Tamalanrea, Panakkukang, dan Manggala</li>
+            <li><strong>Zona II / Kuning:</strong> Bontoala, Tallo, Ujung Pandang, Wajo, dan Panakkukang</li>
+            <li><strong>Zona III / Hitam:</strong> Makassar, Mamajang, Ujung Pandang, Mariso, Rappocini, dan Wajo</li>
+            <li><strong>Zona IV / Hijau:</strong> Manggala, Panakkukang, dan Rappocini</li>
+            <li><strong>Zona V / Biru:</strong> Tamalate, Mamajang, Mariso, Panakkukang, dan Rappocini</li>
+            <li><strong>Zona VI / Putih:</strong> Ujung Tanah, Tallo, Ujung Pandang, dan Sangkarrang</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -136,21 +148,162 @@
     <script src="https://cdn.jsdelivr.net/npm/@googlemaps/markerclusterer@latest/dist/index.min.js"></script>
 
     <script type="text/javascript">
-      function initialize() {
+      function initializeZoneMap() {
         var mapOptions = {
           zoom: 12.5,
           center: new google.maps.LatLng(-5.1113133, 119.3202267),
           disableDefaultUI: false
         };
 
-        var mapElement = document.getElementById('map');
+        var mapElement = document.getElementById('map-zone');
         var map = new google.maps.Map(mapElement, mapOptions);
 
         fetch('http://localhost/sig-sma/ambildata_kec.php')
           .then(response => response.json())
           .then(data => {
             console.log("Data JSON diterima:", data);
-            setMarkers(map, data.results);
+            setMarkersZone(map, data.results);
+          })
+          .catch(error => console.error("Kesalahan saat mengambil data:", error));
+      }
+
+      function groupLocationsByCustomGroups1(locations) {
+        var groups = {
+          'Group 11': ['Kecamatan Biringkanaya', 'Kecamatan Tamalanrea', 'Kecamatan Panakkukang', 'Kecamatan Manggala'],
+          'Group 22': ['Kecamatan Bontoala', 'Kecamatan Tallo', 'Kecamatan Ujung Pandang', 'Kecamatan Wajo', 'Kecamatan Panakkukang'],
+          'Group 33': ['Kecamatan Makassar', 'Kecamatan Mamajang', 'Kecamatan Ujung Pandang', 'Kecamatan Mariso', 'Kecamatan Wajo', 'Kecamatan Rappocini'],
+          'Group 44': ['Kecamatan Manggala', 'Kecamatan Panakkukang', 'Kecamatan Rappocini'],
+          'Group 55': ['Kecamatan Tamalate', 'Kecamatan Mamajang', 'Kecamatan Mariso', 'Kecamatan Panakkukang', 'Kecamatan Rappocini'],
+          'Group 66': ['Kecamatan Ujung Tanah', 'Kecamatan Tallo', 'Kecamatan Ujung Pandang', 'Kecamatan Sangkarrang']
+        };
+
+        var groupedLocations1 = {};
+
+        for (var group in groups) {
+          groupedLocations1[group] = locations.filter(function(location) {
+            return groups[group].includes(location.kecamatan);
+          });
+        }
+
+        return groupedLocations1;
+      }
+
+      function setMarkersZone(map, locations) {
+        console.log("Menetapkan marker:", locations);
+        var globalPin = 'img/marker.png';
+        var markers = [];
+        var circles = [];
+
+        var locationsByGroup1 = groupLocationsByCustomGroups1(locations);
+        console.log("Lokasi berdasarkan grup:", locationsByGroup1);
+
+        for (var group in locationsByGroup1) {
+          var filteredLocations = locationsByGroup1[group];
+
+          if (filteredLocations.length > 0) {
+            var bounds = new google.maps.LatLngBounds();
+
+            filteredLocations.forEach(function(location) {
+              var myLatLng = new google.maps.LatLng(location.latitude, location.longitude);
+              bounds.extend(myLatLng);
+
+              var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: location.nama_instansi,
+                icon: globalPin
+              });
+
+              google.maps.event.addListener(marker, 'click', getInfoCallback(map, getContentString(location), marker));
+              markers.push(marker);
+            });
+
+            var circle = new google.maps.Circle({
+              map: map,
+              center: bounds.getCenter(),
+              radius: getRadius(bounds),
+              fillColor: getColorForGroup1(group),
+              fillOpacity: 0.35,
+              strokeColor: getColorForGroup1(group),
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+            });
+            circles.push(circle);
+          }
+        }
+      }
+
+      function getColorForGroup1(group) {
+        var colors1 = {
+          'Group 11': '#FF0000',
+          'Group 22': '#EAFF00',
+          'Group 33': '#000000',
+          'Group 44': '#00FF00',
+          'Group 55': '#00FFFF',
+          'Group 66': '#FFFFFF'
+        };
+        return colors1[group] || '#FF0000';
+      }
+
+      function getRadius(bounds) {
+        var ne = bounds.getNorthEast();
+        var sw = bounds.getSouthWest();
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(ne, sw);
+        return distance / 2;
+      }
+
+      function getContentString(location) {
+        return '<div id="content">' +
+          '<div id="siteNotice"></div>' +
+          '<h5 id="firstHeading" class="firstHeading">' + location.nama_instansi + '</h5>' +
+          '<div id="bodyContent">' +
+          '<a href="detail.php?id=' + location.id_instansi + '">Info Detail</a>' +
+          '</div>' +
+          '</div>';
+      }
+
+      function getInfoCallback(map, content, marker) {
+        return function() {
+          var infowindow = new google.maps.InfoWindow({
+            content: content
+          });
+          infowindow.open(map, marker);
+        };
+      }
+
+      google.maps.event.addDomListener(window, 'load', initializeZoneMap);
+    </script>
+
+    <section id="services" class="services section-bg">
+      <div class="container">
+        <div class="text-center" data-aos="zoom-in">
+          <h3 style="font-weight: bold; text-transform: uppercase;">Peta Zonasi Berdasarkan Hasil Cluster AHC</h3>
+        </div>
+        <div class="panel-body" style="align-content: center;">
+          <div id="map-centroid" style="width:100%;height:480px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCfVs4seygQa2FZiHc8-JBPw4AyaADVzNA"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@googlemaps/markerclusterer@latest/dist/index.min.js"></script>
+
+    <script type="text/javascript">
+      function initializeCentroidMap() {
+        var mapOptions = {
+          zoom: 12.5,
+          center: new google.maps.LatLng(-5.1113133, 119.3202267),
+          disableDefaultUI: false
+        };
+
+        var mapElement = document.getElementById('map-centroid');
+        var map = new google.maps.Map(mapElement, mapOptions);
+
+        fetch('http://localhost/sig-sma/ambildata_kec.php')
+          .then(response => response.json())
+          .then(data => {
+            console.log("Data JSON diterima:", data);
+            setMarkersCentroid(map, data.results);
           })
           .catch(error => console.error("Kesalahan saat mengambil data:", error));
       }
@@ -158,7 +311,8 @@
       function groupLocationsByCustomGroups(locations) {
         var groups = {
           'Group 1': ['SMA Negeri 5 Makassar', 'SMA Negeri 9 Makassar', 'SMA Negeri 10 Makassar', 'SMA Negeri 12 Makassar',
-            'SMA Negeri 13 Makassar', 'SMA Negeri 19 Makassar', 'SMA Negeri 23 Makassar'],
+            'SMA Negeri 13 Makassar', 'SMA Negeri 19 Makassar', 'SMA Negeri 23 Makassar'
+          ],
           'Group 2': ['SMA Negeri 11 Makassar', 'SMA Negeri 14 Makassar', 'SMA Negeri 20 Makassar', 'SMA Negeri 3 Makassar', 'SMA Negeri 8 Makassar'],
           'Group 3': ['SMA Negeri 7 Makassar', 'SMA Negeri 18 Makassar', 'SMA Negeri 21 Makassar', 'SMA Negeri 22 Makassar'],
           'Group 4': ['SMA Negeri 1 Makassar', 'SMA Negeri 4 Makassar', 'SMA Negeri 16 Makassar', 'SMA Negeri 17 Makassar'],
@@ -175,7 +329,7 @@
         return groupedLocations;
       }
 
-      function setMarkers(map, locations) {
+      function setMarkersCentroid(map, locations) {
         console.log("Menetapkan marker:", locations);
         var globalPin = 'img/marker.png';
         var centroidPin = 'img/center.png';
@@ -309,7 +463,7 @@
         };
       }
 
-      google.maps.event.addDomListener(window, 'load', initialize);
+      google.maps.event.addDomListener(window, 'load', initializeCentroidMap);
     </script>
 
     <section id="portfolio" class="contact">
@@ -395,7 +549,8 @@
               <button type="button" class="btn btn-primary" onclick="searchSchools()">Cari Sekolah</button>
               <button type="button" class="btn btn-secondary" onclick="enableUserLocation()">Aktifkan Lokasi Saya</button>
             </form>
-            <br></br>
+            <br>
+            <p>Hasil pencarian berdasarkan AHC</p>
             <table id="result-table" class="table table-bordered">
               <thead>
                 <tr>
@@ -575,7 +730,7 @@
           fillColor: '#FF0000',
           fillOpacity: 0.35,
           map: map,
-          radius: 0 
+          radius: 0
         });
       }
 
@@ -619,6 +774,14 @@
           return;
         }
 
+        const radiusInput = document.getElementById('radius').value;
+        const radiusInMeters = parseFloat(radiusInput) * 1000;
+
+        if (!radiusInput || radiusInMeters <= 0) {
+          alert('Harap masukkan radius yang valid.');
+          return;
+        }
+
         const nearestCentroid = findNearestCentroid();
         if (!nearestCentroid) {
           alert('Centroid terdekat tidak ditemukan.');
@@ -650,7 +813,7 @@
           position: centroidLocation,
           map: map,
           title: 'Centroid: ' + nearestCentroid.group,
-          icon: 'img/center.png' 
+          icon: 'img/center.png'
         });
 
         if (!radiusCircle) {
@@ -665,9 +828,9 @@
         }
 
         radiusCircle.setCenter(centroidLocation);
-        radiusCircle.setRadius(maxDistance); 
+        radiusCircle.setRadius(maxDistance);
 
-        map.setCenter(centroidLocation); 
+        map.setCenter(centroidLocation);
 
         displayClusterSchools(nearestCentroid);
       }
@@ -681,7 +844,7 @@
         }
 
         const tableBody = document.getElementById('result-table').getElementsByTagName('tbody')[0];
-        tableBody.innerHTML = ''; 
+        tableBody.innerHTML = '';
 
         const schoolsWithDistance = [];
 
@@ -696,7 +859,7 @@
               position: schoolLocation,
               map: map,
               title: school,
-              icon: 'img/marker.png' 
+              icon: 'img/marker.png'
             });
 
             schoolsWithDistance.push({
